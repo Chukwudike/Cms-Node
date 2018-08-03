@@ -1,0 +1,57 @@
+<% include ../../partials/admin/header %>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-sm-4">
+            <h1>Create Category</h1>
+            <form action="/admin/categories/create" method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" placeholder="Enter title" class="form-control">
+                    </div>
+    
+                <button class="btn btn-primary" type="submit">Create Category</button>
+            </form>
+        </div>
+    
+        <br>
+    
+        <hr>
+    
+    
+    
+    </div>
+    
+    <br>
+    
+        <div class="col-sm-8">
+            
+            <h1>Categories</h1>
+           <table class="table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(let i = 0; i<category.length; i++) { %>
+                    <tr>
+                        <td><%= category[i]._id %></td>
+                        <td><%= category[i].name %></td>
+                        <td><a href="/admin/categories/edit/<%= category[i]._id %>" class="btn btn-info">Edit</a></td>
+                        <td>
+                            <form action="/admin/categories/delete/<%= category[i]._id %>?_method=DELETE" method="post">
+                                <button class="btn btn-danger"type="submit">Delete</button>
+                            </form>
+                      </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    
+    
+    
+</div>
+</div>

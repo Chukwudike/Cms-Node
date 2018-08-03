@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+<% include ../partials/home-nav %>
+
+<div class= "container">
+
+
+<div class="row">
+
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
+
+        <h1 class="my-4">Home</h1>
+
+
+        <% for(var i=0; i<allpost.length; i++) { %>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <img img height="600" class="card-img-top img-responsive" src="/uploads/<%=allpost[i].file%>" alt="Card image cap">
+            <div class="card-body">
+                <h2 class="card-title"><%=allpost[i].title%></h2>
+                <p class="card-text"><%=allpost[i].body%></p>
+                <a href="/fullpost/<%=allpost[i]._id %>" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on  by
+                <a href="#">Start Bootstrap</a>
+            </div>
+        </div>
+      <% } %>
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- Sidebar Widgets Column -->
+    
+    <% include ../partials/sidebar %>
+
+
+
+</div>
+<!-- /.row -->
+
+</div>
+
+
+
+
+
+<% include ../partials/footer %>

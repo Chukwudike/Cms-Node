@@ -1,0 +1,83 @@
+<% include ../../partials/admin/header %>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mb-3 pb-5" >
+
+<h1>ALL POSTS</h1>
+<% if (success_message) { 
+    
+
+
+%>
+
+<%=  success_message  %>
+
+<% }  %>
+
+<table class="table table-bordered">
+
+    <thead>
+    <tr>
+
+        <th>Id</th>
+        <th>File</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Category</th>
+        <th>Allow Comments</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+        <% for(var i=0; i<allpost.length; i++) { %>
+
+        <tr>
+
+            <td><%= allpost[i]._id %></td>
+            <td><img height="50" class="img-responsive" src="/uploads/<%=allpost[i].file%>" alt=""></td>
+            <td><%= allpost[i].title %></td>
+            <td><%= allpost[i].status %></td>
+            <td><%= allpost[i].category.name %></td>
+            <td><%= allpost[i].allowComments %></td>
+            <td><%= allpost[i].date %></td>
+            <!-- <td><a href=""></a></td> -->
+            <!-- <td></td> -->
+            <td><a href="/admin/posts/edit/<%=allpost[i]._id %>" class="btn btn-info">Edit</a></td>
+            <td>
+
+                <form action="/admin/posts/delete/<%=allpost[i]._id  %>?_method=DELETE" method="post">
+                    <button type="submit" class="btn btn-danger">DELETE</button>
+                </form>
+
+
+
+            </td>
+
+        </tr>
+
+        <% } %>
+
+
+    </tbody>
+
+
+
+</table>
+
+
+</div>
+</div>
+</div>
+<!-- /.container-fluid-->
+<!-- /.content-wrapper-->
+
+</div>
+
+<% include ../../partials/admin/footer %>
